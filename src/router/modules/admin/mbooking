@@ -1,0 +1,42 @@
+/** When your routing table is too long, you can split it into small modules **/
+
+import Layout from '@/layout'
+
+const bookingRouter = {
+  path: '/admin/mbooking',
+  component: Layout,
+  redirect: 'noRedirect',
+  name: 'ManageBooking',
+  meta: {
+    title: 'Bookings',
+    icon: 'table'
+  },
+  children: [
+    {
+      path: 'admin/checkin',
+      component: () => import('@/views/table/complex-table'),
+      name: 'Checkin',
+      meta: { title: 'New Check-in',
+              icon: 'edit'
+      }
+    },
+    {
+      path: 'admin/checkinouts',
+      component: () => import('@/views/table/complex-table'),
+      name: 'CheckinHistory',
+      meta: { title: 'Check-in outs',
+              icon: 'list'
+      }
+    },
+    {
+      path: 'admin/mbookings',
+      component: () => import('@/views/table/complex-table'),
+      name: 'ManageBooking',
+      meta: { title: 'Bookings',
+              icon: 'table'
+      }
+    }
+  ]
+}
+
+export default bookingRouter

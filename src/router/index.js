@@ -11,6 +11,14 @@ import componentsRouter from './modules/components'
 import chartsRouter from './modules/charts'
 import tableRouter from './modules/table'
 import nestedRouter from './modules/nested'
+/* Aspire Admin Modules */
+import userRouter from './modules/admin/user'
+import memberRouter from './modules/admin/member'
+import mbookingRouter from './modules/admin/mbooking'
+/* Aspire User Modules */
+import profileRouter from './modules/member/profile'
+import bookingRouter from './modules/member/booking'
+import creditRouter from './modules/member/credit'
 
 /**
  * Note: sub-menu only appear when route children.length >= 1
@@ -79,10 +87,41 @@ export const constantRoutes = [
         path: 'dashboard',
         component: () => import('@/views/dashboard/index'),
         name: 'Dashboard',
-        meta: { title: 'Dashboard', icon: 'dashboard', affix: true }
+        meta: { title: 'Admin Dashboard', icon: 'dashboard', affix: true }
       }
     ]
   },
+
+  /** Aspire data models in modules **/
+  userRouter,
+  memberRouter,
+  mbookingRouter,
+  {
+    path: '/',
+    component: Layout,
+    children: [
+      {
+        path: 'index',
+        meta: { title: ' - End of Adminpages - ', affix: true }
+      }
+    ]
+  },
+  profileRouter,
+  bookingRouter,
+  creditRouter,
+  {
+    path: '/',
+    component: Layout,
+    children: [
+      {
+        path: 'index',
+        meta: { title: ' - End of Memberpages - ', affix: true }
+      }
+    ]
+  },
+
+  /** .. more **/
+
   {
     path: '/documentation',
     component: Layout,
